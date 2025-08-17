@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Banco {
+    private List<ContaBancaria> contas = new ArrayList<>();
+
+    public void adicionarConta(ContaBancaria conta) {
+        contas.add(conta);
+    }
+
+    public void mostrarContas() {
+        System.out.println("Contas no banco:");
+        for (ContaBancaria conta : contas) {
+            System.out.println("Titular: " + conta.getTitular().getNome() + " - Saldo: R$" + conta.getSaldo());
+        }
+    }
+
+    public ContaBancaria buscarConta(String nomeTitular) {
+        for (ContaBancaria conta : contas) {
+            if (conta.getTitular().getNome().equalsIgnoreCase(nomeTitular)) {
+                return conta;
+            }
+        }
+        System.out.println("Conta não encontrada para o titular: " + nomeTitular);
+        return null;
+    }
+}
